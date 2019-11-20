@@ -1,0 +1,11 @@
+# CAEN
+Host aashia
+	HostName login.engin.umich.edu
+	User aashia
+	Compression yes
+
+# UMich GitLab
+Host gitlab
+	HostName gitlab.com
+	User git
+	IdentityFile ~/.ssh/aashia_rsa
