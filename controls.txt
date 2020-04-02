@@ -1,0 +1,128 @@
+# Terminal Navigation
+CTRL+p 					# display previous command
+CTRL+n 					# display next command
+CTRL+a 					# go to beginning of line
+CTRL+e 					# go to end of line
+CTRL+f 					# move forward one
+CTRL+b 					# move backward one
+CTRL+u 					# delete text to front
+CTRL+k 					# delete text to end
+CTRL+h					# backspace
+CTRL+d					# delete
+history					# history of commands
+
+# Git
+git init				# create empty git repository/reinitialize existing one
+git add FILE                            # add file
+git status                              # see what's been added or modified
+git commit                              # commit any added files
+git push                                # push changes to server
+git pull 				# update local copy (already in server)
+git log                                 # commit history
+git log FILE                            # commit history for one file
+git log --stat                          # show insertions and deletions
+git checkout HEAD
+git checkout HEAD^
+git checkout master
+git checkout FILE                       # revert FILE to last checked-in version
+git reset PATH                          # undo git add
+
+# Git One-Time Setup
+git config --global user.name "Name"    # Your name for author when committing
+git config --global user.email "email"  # email address (global)
+git config user.email "email"           # email address for one project
+
+# Files/Directories
+ls                                      # list directory contents
+ls -l                                   # include time, size, etc.
+ls -a                                   # include hidden files
+ls -A                                   # include hidden files, but not . or ..
+ls -t                                   # sort by time
+tree					# pretty-print recursively
+file * 					# list the types in the file
+mkdir DIR				# make directory
+touch FILE				# create empty file
+cp FILE1 FILE2				# copy file contents from FILE1 to FILE2
+cp FILE DIR				# copy file into directory
+cp FILE1 FILE2 DIR			# copy multiple files into directory
+cp * DIR				# copy all files in working directory to directory
+cp m*.txt DIR				# copy all files with "m[ ].txt" into directory
+mv FILE1 FILE2				# move file contents from FILE1 to FILE2
+mv FILE DIR				# move file into directory
+mv FILE1 FILE2 DIR			# move multiple files into directory
+rm FILE					# remove file
+rmdir DIR				# remove directory
+rm -r DIR				# remove directory and files (recursive)
+pwd                                     # current directory
+cd                                      # change to home directory
+cd ..                                   # change to directory up one
+cd DIR                                  # change to directory
+cd -                                    # return to previous directory (bash)
+
+# Redirection
+echo "hi"				# print stdout
+echo "hi" > FILE			# print file
+echo "hi" >> FILE			# append file
+cat					# outputs contents of file to terminal
+cat FILE1 > FILE2			# takes stdout and overwrites file
+cat FILE1 >> FILE2			# takes stdout and appends file
+cat < FILE				# takes stdin from file and prints to terminal
+cat FILE | wc				# outputs # of lines, words, and characters in FILE
+sort FILE				# orders file alphabetically
+sort -n FILE				# orders file numerically
+uniq FILE				# filters adjacent, duplicate lines in file
+CMD | CMD				# pipe, command to command redirection
+shuf                                    # shuffle lines
+head                                    # first 10 lines
+head -n2                                # first 2 lines
+head -n-2                               # all but last 2 lines
+tail                                    # last 10 lines
+tail -n2                                # last 2 lines
+
+# Search/Regex
+grep x FILE				# global regex print, search file for pattern
+grep -i PATTERN FILE			# case insensitive, search file for capital/lowercase pattern
+grep -R PATTERN DIR			# search all files in directory, outputs matching filenames/lines
+grep -R PATTERN *			# search all files in current/subdirectories
+grep -Rl x DIR				# search all files in directory, outputs only matching filenames
+grep -v x DIR				# search all files in directory for non-matches (inverse)
+grep “^hi” FILE				# match all lines that start with ‘hi’
+grep “bye$” FILE			# match all lines that end with ‘bye’
+grep “[a-c]” FILE			# match all lines that contain any of the letters a, b, or c
+grep “[^aeiou]” FILE			# match all lines that do not contain a vowel
+grep “*[0-9]” FILE			# match all lines that start with a digit
+sed 's/SEARCH/REPLACE/g'		# stream editor, s = substitution, replace search string globally
+
+# File Differences
+diff FILE1 FILE2                        # view differences of two files
+diff <(CMD1) <(CMD2)                    # diff the output of two commands (bash)
+diff3 FILE1 FILE2 FILE3                 # diff three files
+sdiff                                   # same as diff --side-by-side
+diff FILE1 FILE2 > patch.txt            # save a patch
+colordiff                               # same as diff, but with color
+
+# Processes and Threads
+ps                                      # display my processes
+ps -u USER                              # display USER's processes
+ps -ax                                  # all processes on the machine
+ps -axM                                 # all processes and threads (BSD)
+ps axm                                  # all processes and threads (GNU)
+pgrep STRING                            # search for processes, return PID
+pgrep -af STRING                        # search for full process name & args (GNU)
+pgrep -lf STRING                        # search for full process name & args (BSD)
+pkill                                   # search for and kill process
+pkill -f                                # search for full process name & args
+kill PID                                # kill process with PID
+kill -PID                               # kill process group with PID
+kill -9 PID                             # kill process using signal 9
+
+# Web Utilities
+python -m SimpleHTTPServer 8000         # start a file server at ./ on port 8000
+python3 -m http.server 8000             # start a file server at ./ on port 8000
+wget https://www.google.com/            # download one page
+wget -m aashia.com                	# download everything
+wget -r                                 # recursive (default max depth 5)
+wget -p                                 # include all files, including images
+youtube-dl URL                          # download a youtube video
+curl ifconfig.me                        # what is my IP address?
+curl ipinfo.io/ip                       # what is my IP address?
