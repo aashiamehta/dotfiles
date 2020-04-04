@@ -10,17 +10,20 @@ CTRL+k 					# delete text to end
 CTRL+h					# backspace
 CTRL+d					# delete
 history					# history of commands
+clear					# clears terminal window
 
 # Git
 git init				# create empty git repository/reinitialize existing one
-git add FILE                            # add file
+git add FILE                            # add file to staging area
 git status                              # see what's been added or modified
 git commit                              # commit any added files
 git push                                # push changes to server
 git pull 				# update local copy (already in server)
+git diff FILE				# check diff between working directory and staging area
 git log                                 # commit history
 git log FILE                            # commit history for one file
 git log --stat                          # show insertions and deletions
+git show HEAD				# file changes and git log of most recent commit
 git checkout HEAD
 git checkout HEAD^
 git checkout master
@@ -78,8 +81,10 @@ head -n2                                # first 2 lines
 head -n-2                               # all but last 2 lines
 tail                                    # last 10 lines
 tail -n2                                # last 2 lines
+less					# displays files one page at a time
 
 # Search/Regex
+Ctrl-R					# reverse search
 grep x FILE				# global regex print, search file for pattern
 grep -i PATTERN FILE			# case insensitive, search file for capital/lowercase pattern
 grep -R PATTERN DIR			# search all files in directory, outputs matching filenames/lines
@@ -91,7 +96,7 @@ grep “bye$” FILE			# match all lines that end with ‘bye’
 grep “[a-c]” FILE			# match all lines that contain any of the letters a, b, or c
 grep “[^aeiou]” FILE			# match all lines that do not contain a vowel
 grep “*[0-9]” FILE			# match all lines that start with a digit
-sed 's/SEARCH/REPLACE/g'		# stream editor, s = substitution, replace search string globally
+sed 's/SEARCH/REPLACE/g' FILE		# stream editor, s = substitution, replace search string globally
 
 # File Differences
 diff FILE1 FILE2                        # view differences of two files
@@ -126,3 +131,39 @@ wget -p                                 # include all files, including images
 youtube-dl URL                          # download a youtube video
 curl ifconfig.me                        # what is my IP address?
 curl ipinfo.io/ip                       # what is my IP address?
+
+# Nano
+Ctrl+O					# saves file, 'O' for output
+Enter					# writes filename
+Ctrl+X					# exits program, 'X' for exit
+Ctrl+G					# opens help menu
+
+# Bash Profile (Environment Settings)
+~/.bashrc				# linux shells
+~/.bash_profile				# OSX
+nano ~/.bash_profile			# nano editor to configure environment
+vi ~/.bash_profile			# vim editor to configure environment
+source ~/.bash_profile			# activates changes (aliases) in current session
+alias pd="pwd"				# create keyboard shortcut/alias
+export PS1=">> "			# sets command line prompt from default "$" to ">>"
+export USER="Aashia Mehta"		# sets environment variable USER, persists across programs
+echo $USER				# at command line, returns value for variable
+echo $HOME				# env. var.: displays path of home directory
+echo $PATH				# env. var.: list of directories that contain scripts sep. by ":"
+env					# list of environment variables (prefs/settings) for current user
+env | grep PATH				# displays value of one environment variable
+
+# Bash Scripting
+#!/bin/bash				# beginning line, tells computer the interpreter to use
+chmod +x script.sh			# execute permission
+./script.sh				# run script
+PATH=~/bin:$PATH			# ???
+-eq					# equal
+-ne					# not equal
+-le					# less than or equal
+-lt					# less than
+-ge					# greater than or equal
+-gt					# greater than
+-z					# is null
+$VARNAME				# accessing variables
+read					# get input
