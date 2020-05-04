@@ -10,6 +10,7 @@ CTRL+k 					# delete text to end
 CTRL+h					# backspace
 CTRL+d					# delete
 history					# history of commands
+man					# manual page of command
 clear					# clears terminal window
 
 # Git
@@ -24,11 +25,20 @@ git log                                 # commit history
 git log FILE                            # commit history for one file
 git log --stat                          # show insertions and deletions
 git show HEAD				# file changes and git log of most recent commit
-git checkout HEAD
-git checkout HEAD^
-git checkout master
+git checkout HEAD			# restore working directory to last commit
 git checkout FILE                       # revert FILE to last checked-in version
-git reset PATH                          # undo git add
+git reset HEAD                          # undo git add before commit
+git reset 5d91203			# sets HEAD (current commit) to previous commit
+git branch				# which branch am I on (*)
+git branch BRANCH_NAME			# create new branch called BRANCH_NAME
+git checkout BRANCH_NAME		# switch to branch called BRANCH_NAME
+git checkout master			# switch to master branch
+git merge BRANCH_NAME			# merge a branch into master, must be in master
+git branch -d BRANCH_NAME		# delete branch
+git remote -v				# list remotes
+git fetch				# bring changes to remote repo to your local copy on remote branch
+git merge origin/master			# update local master branch with changes to remote repo
+git push origin BRANCH_NAME		# make your branch the remote, origin
 
 # Git One-Time Setup
 git config --global user.name "Name"    # Your name for author when committing
@@ -91,8 +101,8 @@ grep -R PATTERN DIR			# search all files in directory, outputs matching filename
 grep -R PATTERN *			# search all files in current/subdirectories
 grep -Rl x DIR				# search all files in directory, outputs only matching filenames
 grep -v x DIR				# search all files in directory for non-matches (inverse)
-grep “^hi” FILE				# match all lines that start with ‘hi’
-grep “bye$” FILE			# match all lines that end with ‘bye’
+grep “^hi” FILE				# anchor: match all lines that start with ‘hi’
+grep “bye$” FILE			# anchor: match all lines that end with ‘bye’
 grep “[a-c]” FILE			# match all lines that contain any of the letters a, b, or c
 grep “[^aeiou]” FILE			# match all lines that do not contain a vowel
 grep “*[0-9]” FILE			# match all lines that start with a digit
@@ -138,6 +148,30 @@ Enter					# writes filename
 Ctrl+X					# exits program, 'X' for exit
 Ctrl+G					# opens help menu
 
+# Vim
+i					# insert before character under cursor
+I					# insert at beginning of line
+a					# append after character under cursor
+A					# insert at end of line
+x					# delete character under cursor
+X					# delete character before character under cursor
+r <char>				# replace character under cursor
+u					# undo
+yy					# copies line
+p					# paste
+:w					# write, save
+:wq					# save and quit
+w					# go to next word
+b					# go to beginning of current word
+e					# go to end of current word
+0					# go to beginning of line
+$					# go to end of line
+^u					# go up half a page
+^d					# go up down a page
+g					# go to top of document
+G					# go to bottom of document
+/					# search for pattern, n = next match
+
 # Bash Profile (Environment Settings)
 ~/.bashrc				# linux shells
 ~/.bash_profile				# OSX
@@ -167,3 +201,17 @@ PATH=~/bin:$PATH			# ???
 -z					# is null
 $VARNAME				# accessing variables
 read					# get input
+
+# GDB (GNU Debugger)
+r					# run
+n					# next
+b 20					# put breakpoint on line 20
+info b					# list breakpoints
+disable <number>			# disable breakpoint
+delete <number>				# delete breakpoint
+where					# shows current stack frames
+frame <number>				# switch to a stack frame
+
+# Valgrind
+valgrind ./myapp			# Finds memory leaks, invalid reads, etc.
+valgrind --leak-check=full ./myapp	# More specific
